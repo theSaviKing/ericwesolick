@@ -1,0 +1,76 @@
+---
+import JournalCard from "@/components/JournalCard";
+import Layout from "@/layouts/Base.astro";
+import "@/styles/plyr.css";
+import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
+---
+
+<style>
+    #player1,
+    #player2 {
+        --plyr-color-main: #415a77;
+        @apply h-72 overflow-hidden rounded;
+    }
+</style>
+
+<Layout pageTitle="Portfolio">
+    <section id="header" class="flex flex-col items-center justify-center p-8">
+        <h1 class="font-display text-4xl font-bold md:text-5xl">
+            My portfolio
+        </h1>
+    </section>
+    <section id="broadcast" class="space-y-8 p-8">
+        <h2
+            class="text-center font-display text-3xl uppercase underline decoration-secondary underline-offset-4"
+        >
+            Broadcast News
+        </h2>
+        <div
+            class="grid grid-rows-2 items-start justify-center gap-8 text-balance text-center lg:grid-cols-2 lg:grid-rows-1"
+        >
+            <div class="flex flex-col items-center justify-center gap-4">
+                <div class="plyr__video-embed" id="player1">
+                    <iframe
+                        src="https://www.youtube.com/embed/n4z2WjnjPRE"
+                        allowfullscreen
+                        allowtransparency
+                        allow="autoplay"></iframe>
+                </div>
+                <p class="font-display text-lg">
+                    Vietnam veteran memorialized over Rapid Creek
+                </p>
+            </div>
+            <div class="flex flex-col items-center justify-center gap-4">
+                <div class="plyr__video-embed" id="player2">
+                    <iframe
+                        src="https://www.youtube.com/embed/TYXHAl53gkE"
+                        allowfullscreen
+                        allowtransparency
+                        allow="autoplay"></iframe>
+                </div>
+                <p class="font-display text-lg">
+                    Habitat for Humanity tackles housing costs, accessibility
+                    for man with paralysis
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="writing" class="space-y-8 p-8">
+        <h2
+            class="text-center font-display text-3xl uppercase underline decoration-secondary underline-offset-4"
+        >
+            Journalistic Writing
+        </h2>
+        <div class="grid grid-rows-3 gap-8 lg:grid-cols-3 lg:grid-rows-1">
+            <JournalCard client:visible />
+        </div>
+    </section>
+
+    <script is:inline src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"
+    ></script>
+    <script is:inline>
+        const player1 = new Plyr("#player1");
+        const player2 = new Plyr("#player2");
+    </script>
+</Layout>

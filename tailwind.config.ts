@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/react";
 import defaultTheme from "tailwindcss/defaultTheme";
-import colors from "tailwindcss/colors";
 
 export default {
     content: [
@@ -22,10 +21,21 @@ export default {
             themes: {
                 light: {
                     colors: {
-                        primary: colors.gray,
-                        background: colors.gray[50],
-                        divider: colors.gray[800],
-                        foreground: colors.gray[900],
+                        secondary: "#778da9",
+                        primary: { DEFAULT: "#415a77", foreground: "#e0e1dd" },
+                        background: {
+                            DEFAULT: "#e0e1dd",
+                            foreground: "#0d1b2a",
+                        },
+                        divider: "#1b263b",
+                        foreground: "#0d1b2a",
+                    },
+                    layout: {
+                        radius: {
+                            small: "4px", // rounded-small
+                            medium: "6px", // rounded-medium
+                            large: "10px", // rounded-large
+                        },
                     },
                 },
             },

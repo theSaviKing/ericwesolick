@@ -1,10 +1,11 @@
 ---
+export const prerender = false;
+
 interface Props {
     pageTitle: string;
 }
 const { pageTitle } = Astro.props;
 const { pathname } = Astro.url;
-import { Link } from "@nextui-org/react";
 ---
 
 <html lang="en">
@@ -20,6 +21,17 @@ import { Link } from "@nextui-org/react";
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{`${pageTitle} | Eric Wesolick`}</title>
+        <!-- Rellax Parllax -->
+        <!-- <script>
+            document.querySelectorAll("img").forEach((value) => {
+                value.classList.add("rellax");
+                value.setAttribute("data-rellax-speed", "+1");
+            });
+            import Rellax from "rellax";
+            var rellax = new Rellax(".rellax", {
+                center: true,
+            });
+        </script> -->
     </head>
     <body class="bg-background text-foreground">
         <header
@@ -27,50 +39,55 @@ import { Link } from "@nextui-org/react";
         >
             <a
                 href="/"
-                class="border border-transparent p-1 px-2 font-display transition-[border-color] duration-100 hover:border-divider/75"
+                class="border border-transparent p-1 px-2 font-display transition-[border-color] duration-100 hover:border-primary"
             >
                 <span class="hidden text-2xl sm:inline">Eric Wesolick</span>
                 <span class="inline text-4xl sm:hidden">EW</span>
             </a>
             <nav>
                 <ul class="flex gap-8">
-                    <Link
-                        href="/about"
-                        color="foreground"
-                        underline={pathname == "/about" ? "always" : "hover"}
-                        className="underline-offset-8"
-                        client:visible
+                    <a
+                        href="/"
+                        class:list={[
+                            "decoration-primary underline-offset-8 transition-all will-change-auto hover:opacity-75",
+                            pathname === "/" ? "underline" : "hover:underline",
+                        ]}
                     >
-                        <span class="hidden md:inline">about me</span>
-                        <span class="inline md:hidden">about</span>
-                    </Link>
-                    <Link
+                        <span class="hidden md:inline">home page</span>
+                        <span class="inline md:hidden">home</span>
+                    </a>
+                    <a
                         href="/portfolio"
-                        color="foreground"
-                        underline={pathname == "/portfolio"
-                            ? "always"
-                            : "hover"}
-                        className="underline-offset-8"
-                        client:visible
+                        class:list={[
+                            "decoration-primary underline-offset-8 transition-all will-change-auto hover:opacity-75",
+                            pathname === "/portfolio"
+                                ? "underline"
+                                : "hover:underline",
+                        ]}
                     >
                         <span class="hidden md:inline">my portfolio</span>
                         <span class="inline md:hidden">portfolio</span>
-                    </Link>
-                    <Link
-                        href="/contact"
-                        color="foreground"
-                        underline={pathname == "/contact" ? "always" : "hover"}
-                        className="underline-offset-8"
-                        client:visible
-                    >
-                        <span class="hidden md:inline">contact me</span>
-                        <span class="inline md:hidden">contact</span>
-                    </Link>
+                    </a>
                 </ul>
             </nav>
         </header>
-        <main>
+        <main class="mx-auto lg:w-4/5">
             <slot />
         </main>
+        <footer
+            class="flex items-center justify-center gap-1 border-t border-divider px-8 py-12 font-display md:justify-around md:text-xl"
+        >
+            <p>
+                &copy; {new Date().getFullYear()} Eric Wesolick.
+            </p>
+            &nbsp;
+            <a
+                href="mailto:ewesolick09@gmail.com"
+                class="text-primary underline md:underline-offset-4"
+                >Email me.</a
+            >
+            &nbsp;
+            <p>Designed by <span class="font-display">T. Paul Kariuki</span></p>
+        </footer>
     </body>
 </html>

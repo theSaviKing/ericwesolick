@@ -1,7 +1,11 @@
 ---
 import Layout from "@/layouts/Base.astro";
-import { Button } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import { Image } from "astro:assets";
+import { Skeleton } from "@nextui-org/react";
+import eric from "@/images/me+poland.jpeg";
+import camera from "@/images/camera+cave.jpeg";
+import resume from "@/images/resume.png";
 ---
 
 <Layout pageTitle="Home">
@@ -9,22 +13,29 @@ import { Image } from "astro:assets";
         id="eric"
         class="flex flex-col items-center justify-center gap-8 p-8 md:grid md:grid-cols-2"
     >
-        <div class="flex flex-col gap-4 text-balance text-center">
-            <p class="font-display text-4xl font-bold md:text-5xl">Hey!</p>
+        <div class="flex flex-col gap-4 text-center">
+            <p
+                class="border border-primary p-3 font-display text-4xl font-bold md:text-5xl"
+            >
+                Hey!
+            </p>
             <p class="font-display text-2xl md:text-3xl">
-                My name is <span class="font-bold">Eric Wesolick</span>.
+                My name is <span class="font-bold text-primary"
+                    >Eric Wesolick</span
+                >.
             </p>
             <p class="text-xl md:font-light">
-                I am a Communications student at the
-                University&nbsp;of&nbsp;Mary. Thank you for visiting my
-                portfolio!
+                I am a graduating Communications student at the
+                University&nbsp;of&nbsp;Mary in Bismarck, North Dakota. Thank
+                you for visiting my portfolio!<br />Please use the links at the
+                top to navigate and explore.
             </p>
         </div>
         <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Malcolm_X_NYWTS_4.jpg/748px-Malcolm_X_NYWTS_4.jpg"
-            inferSize
-            alt="Eric Wesolick"
-            class="max-h-screen w-auto"
+            src={eric}
+            alt="Eric walking around the streets of poland"
+            loading="eager"
+            class="max-h-[90vh] w-auto"
         />
     </section>
     <section
@@ -32,12 +43,11 @@ import { Image } from "astro:assets";
         class="flex flex-col-reverse items-center justify-center gap-8 p-8 md:grid md:grid-cols-2"
     >
         <Image
-            src="https://images.squarespace-cdn.com/content/v1/67106a05715dec759f6bbb55/f14ff713-1a85-4f64-ae4f-34fac9be7f87/camera+cave.jpeg"
-            inferSize
+            src={camera}
             alt="A camera in a cave"
-            class="max-h-screen w-auto"
+            class="mx-auto max-h-[90vh] w-auto"
         />
-        <div class="flex flex-col gap-4 text-balance text-center">
+        <div class="flex flex-col gap-4 text-center">
             <p class="font-display text-4xl font-bold md:text-5xl">About Me</p>
             <p class="text-xl md:font-light">
                 <span class="font-bold"
@@ -48,6 +58,43 @@ import { Image } from "astro:assets";
                 writing, and any other kind of media I can use to show who we are
                 and what we do.
             </p>
+        </div>
+    </section>
+    <section
+        id="resume"
+        class="flex flex-col items-center justify-center gap-8 p-8 md:grid md:grid-cols-2"
+    >
+        <div class="flex flex-col gap-4 text-center">
+            <p class="font-display text-4xl font-bold md:text-5xl">My Resume</p>
+            <p class="text-xl md:font-light">
+                Working most recently as a news reporting intern, I have learned
+                video editing, filming, writing, and interviewing individuals.
+                Through my ministry work across multiple states, I have created,
+                ran, and increased the number of participants for my youth
+                groups and built relationships and community with the larger
+                community.
+            </p>
+        </div>
+        <div class="relative overflow-hidden rounded-large">
+            <Image
+                src={resume}
+                alt="Image of resume"
+                class="h-[27rem] object-cover object-top"
+            />
+            <div
+                class="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-gradient-to-b from-primary-900/50 via-primary-900 to-primary-900 p-8 py-20"
+            >
+                <Button
+                    href="/resume.png"
+                    as={Link}
+                    download="Eric Wesolick - Resume"
+                    color="primary"
+                    size="lg"
+                    className="rounded-small"
+                >
+                    Download resume
+                </Button>
+            </div>
         </div>
     </section>
 </Layout>
