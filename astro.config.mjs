@@ -18,6 +18,7 @@ export default defineConfig({
             appShortName: "Eric Wesolick",
             background: "#e0e1dd",
             theme_color: "#415a77",
+            manifestMaskable: "./src/images/maskable_icon.png"
         }),
     ],
     output: "static",
