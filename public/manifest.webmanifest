@@ -1,0 +1,30 @@
+{
+  "name": "Eric Wesolick's Portfolio",
+  "short_name": "Eric Wesolick",
+  "description": "Portfolio for Eric Wesolick, Communications student at the University of Mary (Bismarck, ND)",
+  "dir": "auto",
+  "lang": "en-GB",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone"
+  ],
+  "orientation": "any",
+  "start_url": "/?homescreen=1",
+  "background_color": "#e0e1dd",
+  "theme_color": "#415a77",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
