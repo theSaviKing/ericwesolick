@@ -2,46 +2,46 @@ import {
     Card,
     CardHeader,
     CardBody,
-    CardFooter,
     Divider,
     Link,
-    Image,
+    Button,
 } from "@nextui-org/react";
 
-export default function NextCard({
-    imgUrl,
+export default function JournalCard({
+    image,
     title,
     description,
     link,
     linkText,
-    download = false,
+    downloadFilename,
 }: {
-    imgUrl: string;
+    image?: React.ReactNode;
     title: string;
-    description: React.ReactNode;
+    description?: React.ReactNode;
     link: string;
     linkText: string;
-    download?: boolean;
+    downloadFilename?: string;
 }) {
     return (
-        <Card className="dark" radius="sm">
-            <CardHeader>
-                <Image></Image>
-                <p className="text-balance font-display text-xl font-bold">
-                    Byzantine Rite offered at the University of Mary
+        <Card className="rounded-small bg-background">
+            <CardHeader className="flex flex-col p-0">
+                {image}
+                <p className="text-balance p-3 font-display text-xl font-bold">
+                    {title}
                 </p>
             </CardHeader>
             <Divider />
-            <CardBody className="flex flex-col gap-4">
-                <p>
-                    The University of Mary shows different religious practices
-                    by bringing in a Byzantine Catholic priest to perform the
-                    Ukrainian Rite at the University Chapel.
-                </p>
-                <p className="italic">Written for the UMary Encounter</p>
-            </CardBody>
-            <Divider />
-            <CardFooter>foott</CardFooter>
+            <CardBody className="flex flex-col gap-4">{description}</CardBody>
+            <Button
+                as={Link}
+                href={link}
+                color="primary"
+                className="rounded-none"
+                download={downloadFilename ? downloadFilename : undefined}
+                target="_blank"
+            >
+                {linkText}
+            </Button>
         </Card>
     );
 }

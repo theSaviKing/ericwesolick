@@ -2,7 +2,10 @@
 import JournalCard from "@/components/JournalCard";
 import Layout from "@/layouts/Base.astro";
 import "@/styles/plyr.css";
-import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
+import byzantine from "@/images/byzantine.jpg";
+import ministry from "@/images/ministry.jpg";
+import stm from "@/images/STM.png";
+import { Image } from "astro:assets";
 ---
 
 <style>
@@ -62,8 +65,72 @@ import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
         >
             Journalistic Writing
         </h2>
-        <div class="grid grid-rows-3 gap-8 lg:grid-cols-3 lg:grid-rows-1">
-            <JournalCard client:visible />
+        <div class="flex gap-8 flex-wrap md:grid md:grid-cols-2 lg:grid-cols-3">
+            <JournalCard
+                title="Byzantine Rite offered at the University of Mary"
+                link="/byzantine.pdf"
+                linkText="Download PDF"
+                downloadFilename="Eric Wesolick - Byzantine at UMary"
+                client:visible
+            >
+                <Fragment slot="description">
+                    <p>
+                        The University of Mary shows different religious
+                        practices by bringing in a Byzantine Catholic priest to
+                        perform the Ukrainian Rite at the University Chapel.
+                    </p>
+                    <p class="italic">Written for the UMary Encounter</p>
+                </Fragment>
+                <Image
+                    slot="image"
+                    src={byzantine}
+                    alt="Our Lady of Annunciation chapel at the University of Mary in Bismarck, North Dakota"
+                    class="h-80 w-full object-cover"
+                />
+            </JournalCard>
+            <JournalCard
+                title="Ministry on the Margins keeps its doors open during winter weather"
+                link="/ministry.pdf"
+                linkText="Download PDF"
+                downloadFilename="Eric Wesolick - Ministry on the Margins"
+                client:visible
+            >
+                <Fragment slot="description">
+                    <p>
+                        From 64 to -5 degrees, Ministry on the Margins keep
+                        their doors open all night to keep those struggling
+                        without a home safe from the extreme cold.
+                    </p>
+                    <p class="italic">Written for the UMary Encounter</p>
+                </Fragment>
+                <Image
+                    slot="image"
+                    src={ministry}
+                    alt="Ministry on the Margins in Bismarck, North Dakota"
+                    class="h-80 w-full object-cover"
+                />
+            </JournalCard>
+            <JournalCard
+                title="Principal, 2 assistants to run private middle and high school at St. Thomas More"
+                link="https://www.kotatv.com/2024/08/07/principal-2-assistants-run-private-middle-high-school-st-thomas-more/"
+                linkText="Read story on KOTA TV"
+                client:visible
+            >
+                <Fragment slot="description">
+                    <p>
+                        St Thomas More Middle and High School will now have one
+                        principal running both schools with two assistant
+                        principals taking over different aspects of the school.
+                    </p>
+                    <p class="italic">Written for KOTA News</p>
+                </Fragment>
+                <Image
+                    slot="image"
+                    src={stm}
+                    alt="St Thomas More Middle and High School in Rapid City, South Dakota"
+                    class="w-full object-cover h-80"
+                />
+            </JournalCard>
         </div>
     </section>
 
