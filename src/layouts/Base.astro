@@ -1,5 +1,6 @@
 ---
-import '@/styles/globals.css';
+import "@/styles/globals.css";
+import og from "@/images/og.png";
 
 interface Props {
     pageTitle: string;
@@ -18,6 +19,41 @@ const { pathname } = Astro.url;
             href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap"
             rel="stylesheet"
         />
+        <!-- Primary Meta Tags -->
+        <title>Eric Wesolick: Portfolio</title>
+        <meta name="title" content="Eric Wesolick: Portfolio" />
+        <meta
+            name="description"
+            content="Hey! I'm Eric Wesolick, a graduating Communications student at the University of Mary in Bismarck, ND. My work and ethos are proudly displayed in my portfolio. Please explore!"
+        />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.ericwesolick.com/" />
+        <meta property="og:title" content="Eric Wesolick: Portfolio" />
+        <meta
+            property="og:description"
+            content="Hey! I'm Eric Wesolick, a graduating Communications student at the University of Mary in Bismarck, ND. My work and ethos are proudly displayed in my portfolio. Please explore!"
+        />
+        <meta
+            property="og:image"
+            content={`https://www.ericwesolick.com/${og.src}`}
+        />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.ericwesolick.com/" />
+        <meta property="twitter:title" content="Eric Wesolick: Portfolio" />
+        <meta
+            property="twitter:description"
+            content="Hey! I'm Eric Wesolick, a graduating Communications student at the University of Mary in Bismarck, ND. My work and ethos are proudly displayed in my portfolio. Please explore!"
+        />
+        <meta
+            property="twitter:image"
+            content={`https://www.ericwesolick.com/${og.src}`}
+        />
+        <!-- Meta Tags Generated with https://metatags.io -->
+
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{`${pageTitle} | Eric Wesolick`}</title>
@@ -35,7 +71,7 @@ const { pathname } = Astro.url;
     </head>
     <body class="bg-background text-foreground">
         <header
-            class="flex items-center justify-between border-b border-divider px-10 py-4 sm:px-20 sm:py-6"
+            class="border-divider sticky top-0 flex items-center justify-between border-b bg-background/75 px-10 py-4 backdrop-blur transition-colors duration-100 hover:bg-background sm:px-20 sm:py-6"
         >
             <a
                 href="/"
@@ -45,47 +81,49 @@ const { pathname } = Astro.url;
                 <span class="inline text-4xl sm:hidden">EW</span>
             </a>
             <nav class="flex gap-8">
-                    <a
-                        href="/"
-                        class:list={[
-                            "decoration-primary underline-offset-8 transition-all will-change-auto hover:opacity-75",
-                            pathname === "/" ? "underline" : "hover:underline",
-                        ]}
-                    >
-                        <span class="hidden md:inline">home page</span>
-                        <span class="inline md:hidden">home</span>
-                    </a>
-                    <a
-                        href="/portfolio"
-                        class:list={[
-                            "decoration-primary underline-offset-8 transition-all will-change-auto hover:opacity-75",
-                            pathname === "/portfolio"
-                                ? "underline"
-                                : "hover:underline",
-                        ]}
-                    >
-                        <span class="hidden md:inline">my portfolio</span>
-                        <span class="inline md:hidden">portfolio</span>
-                    </a>
+                <a
+                    href="/"
+                    class:list={[
+                        "decoration-primary underline-offset-8 transition-all will-change-auto hover:opacity-75",
+                        pathname === "/" ? "underline" : "hover:underline",
+                    ]}
+                >
+                    <span class="hidden md:inline">home page</span>
+                    <span class="inline md:hidden">home</span>
+                </a>
+                <a
+                    href="/portfolio"
+                    class:list={[
+                        "decoration-primary underline-offset-8 transition-all will-change-auto hover:opacity-75",
+                        pathname === "/portfolio"
+                            ? "underline"
+                            : "hover:underline",
+                    ]}
+                >
+                    <span class="hidden md:inline">my portfolio</span>
+                    <span class="inline md:hidden">portfolio</span>
+                </a>
             </nav>
         </header>
         <main class="mx-auto lg:w-4/5">
             <slot />
         </main>
         <footer
-            class="flex items-center justify-center gap-1 border-t border-divider px-8 py-12 font-display lg:justify-around lg:text-xl"
+            class="border-divider flex flex-col items-center justify-center border-t p-4 font-display lg:flex-row lg:justify-around lg:px-8 lg:py-12 lg:text-xl"
         >
             <p>
                 &copy; {new Date().getFullYear()} Eric Wesolick.
             </p>
-            &nbsp;
+            <div class="hidden lg:block"></div>
             <a
                 href="mailto:ewesolick09@gmail.com"
-                class="text-primary underline lg:underline-offset-4 lg:text-center"
+                class="text-center text-primary underline lg:underline-offset-4"
                 >Email Eric.</a
             >
-            &nbsp;
-            <p class="lg:text-right">Designed by <span class="font-display">T. Paul Kariuki</span></p>
+            <div class="hidden lg:block"></div>
+            <p class="text-right">
+                Designed by <span class="font-display">T. Paul Kariuki</span>
+            </p>
         </footer>
     </body>
 </html>
