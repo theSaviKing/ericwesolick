@@ -1,10 +1,10 @@
 ---
 import Layout from "@/layouts/Base.astro";
-import { Button, Link } from "@nextui-org/react";
 import { Image } from "astro:assets";
 import eric from "@/images/me+poland.jpeg";
 import camera from "@/images/camera+cave.jpeg";
 import resume from "@/images/resume.png";
+import { Button } from "@/components/ui/button";
 ---
 
 <Layout pageTitle="Home">
@@ -14,7 +14,7 @@ import resume from "@/images/resume.png";
     >
         <div class="flex flex-col gap-4 text-center">
             <p
-                class="border border-primary p-3 font-display text-4xl font-bold md:text-5xl"
+                class="border border-primary rounded-sm p-3 font-display text-4xl font-bold md:text-5xl"
             >
                 Hey!
             </p>
@@ -74,24 +74,19 @@ import resume from "@/images/resume.png";
                 community.
             </p>
         </div>
-        <div class="relative overflow-hidden rounded-large">
+        <div class="rounded-lg relative overflow-hidden">
             <Image
                 src={resume}
                 alt="Image of resume"
                 class="h-[27rem] object-cover object-top"
             />
             <div
-                class="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-gradient-to-b from-primary-900/50 via-primary-900 to-primary-900 p-8 py-20"
+                class="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-gradient-to-b from-primary/40 via-primary to-primary p-8 py-20"
             >
-                <Button
-                    href="/resume.png"
-                    as={Link}
-                    download="Eric Wesolick - Resume"
-                    color="primary"
-                    size="lg"
-                    className="rounded-small"
-                >
-                    Download resume
+                <Button variant="secondary">
+                    <a href="/resume.png" download="Eric Wesolick - Resume"
+                        >Download resume</a
+                    >
                 </Button>
             </div>
         </div>

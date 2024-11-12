@@ -9,16 +9,18 @@ import favicons from "astro-favicons";
 export default defineConfig({
     integrations: [
         react(),
-        tailwind(),
+        tailwind({
+            applyBaseStyles: false,
+        }),
         favicons({
             masterPicture: "./src/images/favicon.svg",
-            appName: "Eric Wesolick's Portfolio",
+            appName: "Eric Wesolick: Portfolio",
             appDescription:
                 "Portfolio for Eric Wesolick, Communications student at the University of Mary (Bismarck, ND)",
             appShortName: "Eric Wesolick",
             background: "#e0e1dd",
             theme_color: "#415a77",
-            manifestMaskable: "./src/images/maskable_icon.png"
+            manifestMaskable: "./src/images/maskable_icon.png",
         }),
     ],
     output: "static",

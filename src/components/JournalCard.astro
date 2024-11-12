@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+import { Button } from "./ui/button";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "./ui/card";
+import { Skeleton } from "./ui/skeleton";
+
+interface Props {
+    title: string;
+    link: string;
+    linkText: string;
+    downloadFilename?: string;
+    byline: string;
+    description: string;
+    image: ImageMetadata;
+    imageAlt: string;
+}
+
+const {
+    title,
+    link,
+    linkText,
+    downloadFilename,
+    byline,
+    description,
+    image,
+    imageAlt,
+} = Astro.props;
+---
+
+<Card className="flex flex-col">
+    <CardHeader>
+        <div class="relative">
+            <Skeleton className="absolute left-0 top-0 -z-10 h-full w-full" />
+            <Image src={image} alt={imageAlt} class="pb-2" />
+        </div>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{byline}</CardDescription>
+    </CardHeader>
+    <CardContent>
+        {description}
+    </CardContent>
+    <CardFooter className="mt-auto">
+        <Button className="w-full">
+            <a
+                href={link}
+                target="_blank"
+                download={downloadFilename ? downloadFilename : undefined}
+                >{linkText}</a
+            >
+        </Button>
+    </CardFooter>
+</Card>

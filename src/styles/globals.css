@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background and Neutral Colors */
+    --background: 240 6% 94%;           /* Soft Ivory */
+    --foreground: 222.2 7% 17.6%;       /* Charcoal Black */
+    --card: 240 6% 94%;                 /* Soft Ivory */
+    --card-foreground: 222.2 7% 17.6%;  /* Charcoal Black */
+    --popover: 240 6% 94%;              /* Soft Ivory */
+    --popover-foreground: 222.2 7% 17.6%; /* Charcoal Black */
+
+    /* Primary Colors */
+    --primary: 213 54% 27%;             /* Deep Blue */
+    --primary-foreground: 240 11% 98%;  /* Near-white for contrast */
+    
+    /* Secondary and Muted Colors */
+    --secondary: 210 10% 95%;           /* Cool Gray */
+    --secondary-foreground: 213 54% 27%; /* Deep Blue */
+    --muted: 210 10% 95%;               /* Cool Gray */
+    --muted-foreground: 220 10% 45%;    /* Slate Gray */
+
+    /* Accent Colors */
+    --accent: 210 10% 95%;              /* Cool Gray */
+    --accent-foreground: 213 54% 27%;   /* Deep Blue */
+    --destructive: 0 59% 57%;           /* Dusty Rose */
+    --destructive-foreground: 240 11% 98%; /* Near-white */
+
+    /* Border and Input Colors */
+    --border: 210 11% 87%;              /* Light Gray for borders */
+    --input: 210 11% 87%;               /* Same as border */
+    --ring: 222.2 7% 17.6%;             /* Charcoal Black */
+
+    /* Chart Colors (examples based on palette) */
+    --chart-1: 10 50% 50%;              /* Muted Coral */
+    --chart-2: 220 30% 30%;             /* Slate Gray */
+    --chart-3: 213 54% 27%;             /* Deep Blue */
+    --chart-4: 43 50% 50%;              /* Muted Warm Yellow */
+    --chart-5: 27 50% 50%;              /* Muted Warm Orange */
+
+    --radius: 0.3rem;
+}
+
+.dark {
+  /* Background and Neutral Colors */
+  --background: 222.2 7% 9%;            /* Dark Charcoal */
+  --foreground: 210 15% 95%;            /* Light Gray Text for readability */
+  --card: 222.2 7% 14%;                 /* Darker Charcoal for card backgrounds */
+  --card-foreground: 210 15% 95%;       /* Light Gray for contrast */
+  --popover: 222.2 7% 14%;              /* Darker Charcoal for popovers */
+  --popover-foreground: 210 15% 95%;    /* Light Gray text */
+
+  /* Primary Colors */
+  --primary: 213 54% 40%;               /* Darkened Deep Blue */
+  --primary-foreground: 210 30% 95%;    /* Off-white for contrast */
+
+  /* Secondary and Muted Colors */
+  --secondary: 213 11% 20%;             /* Dark Cool Gray */
+  --secondary-foreground: 210 30% 85%;  /* Light Gray for readability */
+  --muted: 213 11% 20%;                 /* Dark Cool Gray for muted elements */
+  --muted-foreground: 210 15% 60%;      /* Slate Gray */
+
+  /* Accent Colors */
+  --accent: 213 11% 20%;                /* Dark Cool Gray for accent */
+  --accent-foreground: 210 30% 95%;     /* Off-white for contrast */
+  --destructive: 0 59% 50%;             /* Deep Dusty Rose */
+  --destructive-foreground: 210 30% 95%;/* Off-white for destructive text/buttons */
+
+  /* Border and Input Colors */
+  --border: 210 10% 30%;                /* Dark Slate Gray for borders */
+  --input: 210 10% 30%;                 /* Same dark slate gray for input backgrounds */
+  --ring: 210 10% 80%;                  /* Light Gray for focus rings */
+
+  /* Chart Colors (examples based on palette) */
+  --chart-1: 10 40% 40%;                /* Deep Coral */
+  --chart-2: 220 20% 30%;               /* Darker Slate Gray */
+  --chart-3: 213 54% 40%;               /* Darkened Deep Blue */
+  --chart-4: 43 45% 40%;                /* Muted Yellow */
+  --chart-5: 27 50% 40%;                /* Muted Orange */
+}
+
+}
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

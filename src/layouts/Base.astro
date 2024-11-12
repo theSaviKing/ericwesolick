@@ -1,5 +1,5 @@
 ---
-export const prerender = false;
+import '@/styles/globals.css';
 
 interface Props {
     pageTitle: string;
@@ -73,7 +73,7 @@ const { pathname } = Astro.url;
             <slot />
         </main>
         <footer
-            class="flex items-center justify-center gap-1 border-t border-divider px-8 py-12 font-display md:justify-around md:text-xl"
+            class="flex items-center justify-center gap-1 border-t border-divider px-8 py-12 font-display lg:justify-around lg:text-xl"
         >
             <p>
                 &copy; {new Date().getFullYear()} Eric Wesolick.
@@ -81,11 +81,11 @@ const { pathname } = Astro.url;
             &nbsp;
             <a
                 href="mailto:ewesolick09@gmail.com"
-                class="text-primary underline md:underline-offset-4"
+                class="text-primary underline lg:underline-offset-4 lg:text-center"
                 >Email Eric.</a
             >
             &nbsp;
-            <p>Designed by <span class="font-display">T. Paul Kariuki</span></p>
+            <p class="lg:text-right">Designed by <span class="font-display">T. Paul Kariuki</span></p>
         </footer>
     </body>
 </html>
