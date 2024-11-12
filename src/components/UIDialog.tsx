@@ -36,9 +36,7 @@ export default function UIDialog({
         return (
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                    <Button className="hidden w-full sm:flex">
-                        Watch video
-                    </Button>
+                    <Button className="w-full">Watch video</Button>
                 </DialogTrigger>
                 <DialogContent>
                     <DialogHeader>
@@ -55,7 +53,7 @@ export default function UIDialog({
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
-                <Button className="w-full sm:hidden">Watch video</Button>
+                <Button className="w-full">Watch video</Button>
             </DrawerTrigger>
             <DrawerContent>
                 <DrawerHeader>
