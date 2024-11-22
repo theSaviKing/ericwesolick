@@ -1,6 +1,7 @@
 ---
 import "@/styles/globals.css";
 import og from "@/images/og.png";
+import { ModeToggle } from "@/components/ModeToggle";
 
 interface Props {
     pageTitle: string;
@@ -8,6 +9,33 @@ interface Props {
 const { pageTitle } = Astro.props;
 const { pathname } = Astro.url;
 ---
+
+<script is:inline>
+    const getThemePreference = () => {
+        if (
+            typeof localStorage !== "undefined" &&
+            localStorage.getItem("theme")
+        ) {
+            return localStorage.getItem("theme");
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+    };
+    const isDark = getThemePreference() === "dark";
+    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+    if (typeof localStorage !== "undefined") {
+        const observer = new MutationObserver(() => {
+            const isDark = document.documentElement.classList.contains("dark");
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["class"],
+        });
+    }
+</script>
 
 <html lang="en">
     <head>
@@ -57,30 +85,29 @@ const { pathname } = Astro.url;
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{`${pageTitle} | Eric Wesolick`}</title>
-        <!-- Rellax Parllax -->
-        <!-- <script>
-            document.querySelectorAll("img").forEach((value) => {
-                value.classList.add("rellax");
-                value.setAttribute("data-rellax-speed", "+1");
-            });
-            import Rellax from "rellax";
-            var rellax = new Rellax(".rellax", {
-                center: true,
-            });
-        </script> -->
     </head>
     <body class="bg-background text-foreground">
-        <header
-            class="border-divider sticky top-0 flex items-center justify-between border-b bg-background/75 px-10 py-4 backdrop-blur transition-colors duration-100 hover:bg-background sm:px-20 sm:py-6"
+        <div
+            class="fixed bottom-0 right-0 z-50 mb-6 mr-6 flex scale-125 shadow-2xl sm:hidden"
         >
-            <a
-                href="/"
-                class="border border-transparent p-1 px-2 font-display transition-[border-color] duration-100 hover:border-primary"
-            >
-                <span class="hidden text-2xl sm:inline">Eric Wesolick</span>
-                <span class="inline text-4xl sm:hidden">EW</span>
-            </a>
-            <nav class="flex gap-8">
+            <ModeToggle alignment="end" client:load />
+        </div>
+        <header
+            class="border-divider sticky top-0 z-50 flex items-center justify-center border-b bg-background/75 px-10 py-4 backdrop-blur transition-colors duration-100 hover:bg-background sm:px-20 sm:py-6"
+        >
+            <div class="flex w-1/2">
+                <a
+                    href="/"
+                    class="border border-transparent p-1 px-2 font-display transition-[border-color] duration-100 hover:border-primary"
+                >
+                    <span class="hidden text-2xl sm:inline">Eric Wesolick</span>
+                    <span class="inline text-4xl sm:hidden">EW</span>
+                </a>
+            </div>
+            <div class="hidden sm:block">
+                <ModeToggle alignment="center" client:load />
+            </div>
+            <nav class="flex w-1/2 justify-end gap-8">
                 <a
                     href="/"
                     class:list={[
@@ -95,7 +122,7 @@ const { pathname } = Astro.url;
                     href="/portfolio"
                     class:list={[
                         "decoration-primary underline-offset-8 transition-all will-change-auto hover:opacity-75",
-                        pathname === "/portfolio"
+                        pathname.includes("portfolio")
                             ? "underline"
                             : "hover:underline",
                     ]}
