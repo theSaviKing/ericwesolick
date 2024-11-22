@@ -2,6 +2,7 @@
 import "@/styles/globals.css";
 import og from "@/images/og.png";
 import { ModeToggle } from "@/components/ModeToggle";
+import Linkedin from "@/images/linkedin.astro";
 
 interface Props {
     pageTitle: string;
@@ -95,13 +96,37 @@ const { pathname } = Astro.url;
         <header
             class="border-divider sticky top-0 z-50 flex items-center justify-center border-b bg-background/75 px-10 py-4 backdrop-blur transition-colors duration-100 hover:bg-background sm:px-20 sm:py-6"
         >
-            <div class="flex w-1/2">
+            <div class="flex w-1/2 items-center gap-2">
                 <a
                     href="/"
                     class="border border-transparent p-1 px-2 font-display transition-[border-color] duration-100 hover:border-primary"
                 >
                     <span class="hidden text-2xl sm:inline">Eric Wesolick</span>
                     <span class="inline text-4xl sm:hidden">EW</span>
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/ericwesolick/"
+                    class="group relative"
+                >
+                    <div class="hidden dark:block">
+                        <Linkedin
+                            bgFill="#efeff1"
+                            letterFill="#2a2c30"
+                            class="h-auto w-5 opacity-50"
+                        />
+                    </div>
+                    <div class="dark:hidden">
+                        <Linkedin
+                            bgFill="#2a2c30"
+                            letterFill="#efeff1"
+                            class="h-auto w-5 opacity-50"
+                        />
+                    </div>
+                    <Linkedin
+                        bgFill="#007EBB"
+                        letterFill="#FFF"
+                        class="absolute left-0 top-0 h-auto w-5 opacity-0 transition-opacity group-hover:opacity-100"
+                    />
                 </a>
             </div>
             <div class="hidden sm:block">
