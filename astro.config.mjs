@@ -23,6 +23,7 @@ export default defineConfig({
             manifestMaskable: "./src/images/maskable_icon.png",
         }),
     ],
+    site: "https://www.ericwesolick.com",
     output: "static",
     adapter: vercel({}),
 });
