@@ -1,8 +1,6 @@
 ---
 import "@/styles/globals.css";
 import og from "@/images/og.png";
-import { ModeToggle } from "@/components/ModeToggle";
-import Linkedin from "@/images/linkedin.astro";
 import ThemeToggle from "@/components/ThemeToggle";
 
 interface Props {
@@ -92,7 +90,7 @@ const { pathname } = Astro.url;
         <div
             class="fixed bottom-0 right-0 z-50 mb-6 mr-6 flex scale-125 shadow-2xl sm:hidden"
         >
-            <ModeToggle alignment="end" client:load />
+            <ThemeToggle client:visible />
         </div>
         <header
             class="border-divider sticky top-0 z-50 flex items-center justify-center border-b bg-background/75 px-10 py-4 backdrop-blur transition-colors duration-100 hover:bg-background sm:px-20 sm:py-6"
@@ -161,11 +159,18 @@ const { pathname } = Astro.url;
             <a
                 href="mailto:ewesolick09@gmail.com"
                 class="text-center text-primary underline lg:underline-offset-4"
-                >Email Eric.</a
             >
+                Email Eric.
+            </a>
             <div class="hidden lg:block"></div>
             <p class="text-right">
-                Designed by <span class="font-display">T. Paul Kariuki</span>
+                Designed by <a
+                    href="https://www.tpaulkariuki.com/"
+                    target="_blank"
+                    class="text-primary underline lg:underline-offset-4"
+                >
+                    T. Paul Kariuki
+                </a>
             </p>
         </footer>
     </body>
