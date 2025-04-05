@@ -16,10 +16,10 @@ interface Props {
     link: string;
     linkText: string;
     downloadFilename?: string;
-    byline: string;
+    byline?: string;
     description: string;
-    image: ImageMetadata;
-    imageAlt: string;
+    image?: ImageMetadata;
+    imageAlt?: string;
 }
 
 const {
@@ -37,8 +37,11 @@ const {
 <Card className="flex flex-col">
     <CardHeader>
         <div class="relative">
-            <Skeleton className="absolute left-0 top-0 -z-10 h-full w-full" />
-            <Image src={image} alt={imageAlt} class="pb-2" />
+            {
+                image && imageAlt && (
+                    <Image src={image} alt={imageAlt} class="pb-2" />
+                )
+            }
         </div>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{byline}</CardDescription>
@@ -52,8 +55,9 @@ const {
                 href={link}
                 target="_blank"
                 download={downloadFilename ? downloadFilename : undefined}
-                >{linkText}</a
             >
+                {linkText}
+            </a>
         </Button>
     </CardFooter>
 </Card>

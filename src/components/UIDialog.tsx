@@ -24,9 +24,13 @@ import React from "react";
 
 export default function UIDialog({
     title,
+    description,
+    trigger,
     children,
 }: {
     title: string;
+    description: string;
+    trigger: string;
     children: React.ReactNode;
 }) {
     const [open, setOpen] = React.useState(false);
@@ -36,14 +40,12 @@ export default function UIDialog({
         return (
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                    <Button className="w-full">Watch video</Button>
+                    <Button className="w-full">{trigger}</Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="max-w-screen-md">
                     <DialogHeader>
                         <DialogTitle>{title}</DialogTitle>
-                        <DialogDescription>
-                            YouTube video for KOTA News
-                        </DialogDescription>
+                        <DialogDescription>{description}</DialogDescription>
                     </DialogHeader>
                     {children}
                 </DialogContent>
@@ -53,14 +55,12 @@ export default function UIDialog({
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
-                <Button className="w-full">Watch video</Button>
+                <Button className="w-full">{trigger}</Button>
             </DrawerTrigger>
             <DrawerContent>
                 <DrawerHeader>
                     <DrawerTitle>{title}</DrawerTitle>
-                    <DrawerDescription>
-                        YouTube video for KOTA News
-                    </DrawerDescription>
+                    <DrawerDescription>{description}</DrawerDescription>
                 </DrawerHeader>
                 <div className="px-4">{children}</div>
                 <DrawerFooter>
